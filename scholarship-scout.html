@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scholarship Eligibility Scout</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7fb;--card:#fff;--tx:#1b2030;--mu:#616b85;--bd:#dde1ee;--ac:#3f51d8;--ok:#13795b;--okb:#e2f6ee;--bad:#b3261e;--badb:#fdeceb;--wn:#8a5a00;--wnb:#fff3d6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12141c;--card:#1c2030;--tx:#e8ebf5;--mu:#98a2bf;--bd:#2d3350;--ac:#8c9bff;--ok:#5fd3a8;--okb:#12332a;--bad:#ff8c84;--badb:#3b1a18;--wn:#f2c15a;--wnb:#3a2e10}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin:4px 0}h2{font-size:17px;margin:0 0 10px}.sub{color:var(--mu);margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+label{display:block;font-size:12px;color:var(--mu);margin-bottom:2px}
+input,select{width:100%;padding:8px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit}
+input[type=checkbox]{width:auto}.chk{display:inline-flex;gap:5px;align-items:center;margin:4px 12px 4px 0;font-size:13px;color:var(--tx)}
+button{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:9px 14px;font:inherit;cursor:pointer;margin:4px 6px 4px 0}
+button.s{background:transparent;color:var(--ac);border:1px solid var(--ac)}button:disabled{opacity:.4;cursor:not-allowed}
+.tag{display:inline-block;padding:2px 8px;border-radius:99px;font-size:12px;font-weight:600}
+.ok{background:var(--okb);color:var(--ok)}.bad{background:var(--badb);color:var(--bad)}.wn{background:var(--wnb);color:var(--wn)}
+.row{border:1px solid var(--bd);border-radius:10px;padding:10px 12px;margin:8px 0}
+.q{font-style:italic;color:var(--mu);font-size:13px}.mono{font-family:ui-monospace,Menlo,monospace;font-size:12px}
+.sc{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px}td,th{border-bottom:1px solid var(--bd);padding:6px 8px;text-align:left;vertical-align:top}
+#log{max-height:180px;overflow:auto;white-space:pre-wrap}
+.hero{background:linear-gradient(180deg,#87ceeb,#b9e4f7);color:#0b2a4a;border-radius:16px;padding:36px 24px;margin-bottom:18px;text-align:center;min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.hero h2{font-size:clamp(32px,6vw,52px);margin:6px 0;color:#0b2a4a}.hero p{max-width:640px;margin:8px auto;font-size:17px}
+.steps{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0}.steps span{background:rgba(255,255,255,.65);color:#0b2a4a;border-radius:99px;padding:6px 14px;font-size:13px}
+.hero button{background:#0b2a4a;color:#fff;font-weight:700;padding:14px 48px;font-size:18px;margin-top:10px}
+.facts{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-top:14px;font-size:13px;opacity:.92}
+</style></head><body><main>
+<section class="hero">
+<div style="font-size:44px">🎓</div>
+<h2>Scholarship Eligibility Scout</h2>
+<p>Tell the agent your course, family income and category. It finds the open scholarships you qualify for, explains every exclusion with the official rule, and saves application drafts, only after you approve.</p>
+<div class="steps"><span>1 Collect details</span><span>2 Apply official rules</span><span>3 Find schemes</span><span>4 Draft with approval</span><span>5 Verify saved draft</span></div>
+<button onclick="document.getElementById('app').scrollIntoView({behavior:'smooth'})">Start</button>
+<div class="facts"><span>✔ Human approval before any save</span><span>✔ 4 official test cases built in</span><span>✔ Synthetic data, read-only mock portal</span></div>
+</section>
+<h1 id="app">🎓 Scholarship Eligibility Scout</h1>
+<p class="sub">Agent for first-year students: collect → plan (rules) → find (mock portal) → act (human approval) → verify. All data is synthetic; the portal is a read-only mock.</p>
+
+<div class="card"><h2>1 · Collect details (voice-transcript style input also works: type it below)</h2>
+<div class="grid">
+<div><label>Name</label><input id="name" value="Asha Verma"></div>
+<div><label>Date of birth</label><input id="dob" type="date" value="2007-05-14"></div>
+<div><label>Course</label><select id="course"><option>B.Tech</option><option>B.E.</option><option>B.Sc</option><option>B.A.</option><option>MBBS</option><option>Diploma</option></select></div>
+<div><label>Year</label><select id="year"><option>1</option></select></div>
+<div><label>Family income (Rs/year)</label><input id="income" type="number" value="240000"></div>
+<div><label>Category</label><select id="category"><option>OBC</option><option>General</option><option>SC</option><option>ST</option><option>EWS</option></select></div>
+<div><label>State</label><select id="state"><option selected>Delhi</option><option>Andaman and Nicobar Islands</option><option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chandigarh</option><option>Chhattisgarh</option><option>Dadra and Nagar Haveli and Daman and Diu</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jammu and Kashmir</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Ladakh</option><option>Lakshadweep</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Puducherry</option><option>Punjab</option><option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option></select></div>
+</div>
+<div style="margin-top:8px"><label>Documents on hand</label>
+<span id="docs"></span></div>
+<div style="margin-top:6px"><label class="chk"><input type="checkbox" id="big"> Income certificate scan is large (over 200 KB limit)</label>
+<label class="chk"><input type="checkbox" id="bug"> Simulate portal pre-fill bug (wrong date of birth)</label></div>
+<div style="margin-top:8px"><label>Or describe in words (e.g. “B.Tech, OBC, income 2.4 lakh, Delhi”)</label>
+<input id="nl" placeholder="B.Tech, OBC, income 2.4 lakh, Delhi"><button class="s" onclick="parseNL()">Fill form from text</button></div>
+<button onclick="runAgent()">Find scholarships</button>
+<div id="verr" class="q"></div></div>
+
+<div class="card"><h2>2 · Eligible vs excluded (ranked by amount, then earliest deadline)</h2><div id="res" class="q">Run the agent to see results.</div></div>
+<div class="card"><h2>3 · Approval gate and draft</h2><div id="appr" class="q">No pending action.</div><div id="draft"></div></div>
+<div class="card"><h2>4 · Verify the saved draft</h2><div id="ver" class="q">Nothing to verify yet.</div></div>
+<div class="card"><h2>5 · Official test cases (TC1–TC4)</h2>
+<button onclick="runTests()">Run all 4 test cases</button><button class="s" onclick="copyRep()">Copy report</button>
+<div id="tests" class="sc"></div></div>
+<div class="card"><h2>Evidence log (source IDs, retrieval times, decisions)</h2><div id="log" class="mono"></div></div>
+
+<script>
+const TODAY="2026-10-25",LIMIT=200*1024;
+const DOCS={income:"Income certificate",caste:"Category certificate",marksheet:"Class 12 marksheet",aadhaar:"ID proof"};
+const SCHEMES=[
+{id:"SCH-101",name:"Post-Matric OBC Scholarship",cats:["OBC"],maxInc:250000,amount:30000,deadline:"2026-11-30",docs:["income","caste","marksheet","aadhaar"]},
+{id:"SCH-102",name:"National Technical Merit-cum-Means Award",courses:["B.Tech","B.E."],cats:["General","OBC","SC","ST","EWS"],maxInc:240000,amount:48000,deadline:"2026-12-10",docs:["income","marksheet","aadhaar"]},
+{id:"SCH-103",name:"SC/ST Free-ship Scheme",cats:["SC","ST"],maxInc:250000,amount:55000,deadline:"2026-11-20",docs:["income","caste","marksheet"]},
+{id:"SCH-104",name:"State Technical Education Grant",courses:["B.Tech","B.E.","Diploma"],states:["Delhi"],maxInc:600000,amount:20000,deadline:"2026-12-15",docs:["income","marksheet"]},
+{id:"SCH-105",name:"Medical Merit Scholarship",courses:["MBBS"],maxInc:500000,amount:60000,deadline:"2026-11-25",docs:["income","marksheet"]},
+{id:"SCH-106",name:"Legacy OBC Book Grant",cats:["OBC"],maxInc:300000,amount:10000,deadline:"2026-09-30",docs:["income","caste"]}];
+const $=i=>document.getElementById(i),inr=n=>"Rs "+Number(n).toLocaleString("en-IN"),now=()=>new Date().toISOString().slice(11,19);
+let LOG=[],S={res:[],top:null,portal:newPortal(),draftId:null,pending:null,ver:null,rep:[]};
+const log=m=>{LOG.push(`[${now()}] ${m}`);$("log").textContent=LOG.join("\n");$("log").scrollTop=1e9};
+$("docs").innerHTML=Object.entries(DOCS).map(([k,v])=>`<label class="chk"><input type="checkbox" class="dk" value="${k}" checked> ${v}</label>`).join("");
+function profile(){return{name:$("name").value.trim(),dob:$("dob").value,course:$("course").value,year:$("year").value,income:+$("income").value,category:$("category").value,state:$("state").value,docs:[...document.querySelectorAll(".dk:checked")].map(x=>x.value)}}
+function parseNL(){const t=$("nl").value.toLowerCase();
+const m=t.match(/(\d+(?:\.\d+)?)\s*(lakh|l\b)/);if(m)$("income").value=Math.round(m[1]*1e5);else{const n=t.match(/(?:rs\.?|income)\s*([\d,]{4,})/);if(n)$("income").value=n[1].replace(/,/g,"")}
+["b.tech","b.e.","b.sc","b.a.","mbbs","diploma"].forEach(c=>{if(t.includes(c.toLowerCase()))$("course").value=c==="b.tech"?"B.Tech":c==="b.e."?"B.E.":c==="b.sc"?"B.Sc":c==="b.a."?"B.A.":c==="mbbs"?"MBBS":"Diploma"});
+["obc","general","sc","st","ews"].forEach(c=>{if(new RegExp("\\b"+c+"\\b").test(t))$("category").value=c==="obc"?"OBC":c==="general"?"General":c.toUpperCase()});
+["delhi","haryana","uttar pradesh"].forEach(c=>{if(t.includes(c))$("state").value=c.replace(/\b\w/g,x=>x.toUpperCase())});log("Parsed free-text input into form fields")}
+function validate(p){const e=[];if(!p.name)e.push("name missing");if(!p.dob)e.push("date of birth missing");if(!(p.income>=0)||isNaN(p.income))e.push("income invalid");if(!p.category)e.push("category missing");return e}
+
+/* ---- decision rules ---- */
+function evaluate(p){return SCHEMES.map(s=>{const f=[],L=n=>n.toLocaleString("en-IN");
+if(s.deadline<TODAY)f.push(["deadline",`Applications close on ${s.deadline}.`]);
+if(s.courses&&!s.courses.includes(p.course))f.push(["course",`Open only to ${s.courses.join(", ")} students.`]);
+if(s.cats&&!s.cats.includes(p.category))f.push(["category",`Open only to ${s.cats.join(", ")} category applicants.`]);
+if(s.states&&!s.states.includes(p.state))f.push(["state",`Domicile of ${s.states.join(", ")} required.`]);
+if(p.income>s.maxInc)f.push(["income",`Annual family income must not exceed Rs ${L(s.maxInc)}. (Applicant: Rs ${L(p.income)}, over by Rs ${L(p.income-s.maxInc)}.)`]);
+const miss=s.docs.filter(d=>!p.docs.includes(d));
+return{s,status:f.length?"excluded":miss.length?"uncertain":"eligible",f,miss}})
+.sort((a,b)=>(a.status==="excluded")-(b.status==="excluded")||b.s.amount-a.s.amount||a.s.deadline.localeCompare(b.s.deadline))}
+
+/* ---- mock portal (read-only sources; drafts are the only writes) ---- */
+function newPortal(){return{n:100,drafts:{},byKey:{},blobs:{},
+create(key,fields,files,blobs,bug){if(this.byKey[key])return{id:this.byKey[key],dup:true};
+const id="DRF-"+(++this.n),f={...fields};if(bug)f.dob=(+f.dob.slice(0,4)+1)+f.dob.slice(4);
+this.drafts[id]={id,key,fields:f,files,status:"DRAFT",saved:new Date().toISOString()};this.blobs[id]=blobs;this.byKey[key]=id;return{id}},
+open(id){return JSON.parse(JSON.stringify(this.drafts[id]))},patch(id,k,v){this.drafts[id].fields[k]=v}}}
+
+/* ---- documents: build, compress, readability ---- */
+async function makeCert(doc,big,p){const w=big?1800:700,h=big?1200:480,c=document.createElement("canvas");c.width=w;c.height=h;const x=c.getContext("2d");
+x.fillStyle="#fff";x.fillRect(0,0,w,h);x.fillStyle="#000";x.font=`bold ${Math.round(w/14)}px sans-serif`;x.fillText(DOCS[doc].toUpperCase(),w*.05,h*.25);
+x.font=`${Math.round(w/22)}px sans-serif`;x.fillText(p.name+"  ·  "+p.dob,w*.05,h*.5);x.fillText("Income Rs "+p.income+"  ·  Synthetic",w*.05,h*.7);
+if(big){const d=x.getImageData(0,0,w,h),a=d.data;for(let i=0;i<a.length;i+=4){const n=(Math.random()*40)|0;if(a[i]>200){a[i]-=n;a[i+1]-=n;a[i+2]-=n}}x.putImageData(d,0,0)}
+return new Promise(r=>c.toBlob(r,"image/jpeg",big?.97:.8))}
+async function compress(b){const im=await createImageBitmap(b);let sc=1,q=.85,out=b,tries=0;
+while(out.size>LIMIT&&tries++<40){const c=document.createElement("canvas");c.width=Math.round(im.width*sc);c.height=Math.round(im.height*sc);c.getContext("2d").drawImage(im,0,0,c.width,c.height);
+out=await new Promise(r=>c.toBlob(r,"image/jpeg",q));q-=.1;if(q<.45){q=.8;sc*=.8}}return out}
+async function readable(b){const im=await createImageBitmap(b);const c=document.createElement("canvas");c.width=Math.min(im.width,600);c.height=Math.round(im.height*c.width/im.width);
+const x=c.getContext("2d");x.drawImage(im,0,0,c.width,c.height);const a=x.getImageData(0,0,c.width,c.height).data;let dk=0;for(let i=0;i<a.length;i+=4)if(a[i]<90)dk++;
+const fr=dk/(a.length/4);return{ok:im.width>=500&&fr>.005&&fr<.5,w:im.width,dark:+(fr*100).toFixed(1)}}
+async function sha(b){const h=new Uint8Array(await crypto.subtle.digest("SHA-256",await b.arrayBuffer()));return[...h].slice(0,6).map(x=>x.toString(16).padStart(2,"0")).join("")}
+async function prepareFiles(p,big){const files=[],blobs={},originals={};
+for(const d of p.docs){const o=await makeCert(d,big&&d==="income",p);originals[d]=o;let u=o,comp=false;
+if(o.size>LIMIT){u=await compress(o);comp=true}const r=await readable(u);
+files.push({doc:d,name:`${d}_${p.name.replace(/\s+/g,"_")}.jpg`,origSize:o.size,size:u.size,compressed:comp,originalKept:true,readable:r.ok,readInfo:`${r.w}px wide, ${r.dark}% ink`,sha:await sha(u)});blobs[d]=u}
+return{files,blobs,originals}}
+
+/* ---- agent ---- */
+function runAgent(){const p=profile(),e=validate(p);$("verr").textContent=e.length?"Fix: "+e.join(", "):"";if(e.length)return;
+S.res=evaluate(p);S.top=S.res.find(r=>r.status==="eligible");
+log(`Retrieved ${SCHEMES.length} schemes from mock://portal/schemes (read-only) for profile income=${p.income} ${p.course} ${p.category} ${p.state}`);
+S.res.forEach(r=>log(`${r.s.id} → ${r.status}${r.f.length?" | "+r.f.map(x=>x[0]+': "'+x[1]+'"').join(" ; "):""}${r.miss.length?" | missing docs: "+r.miss.join(","):""}`));render()}
+function render(){const p=profile();$("res").innerHTML=S.res.map((r,i)=>{const c=r.status==="eligible"?"ok":r.status==="uncertain"?"wn":"bad";
+return`<div class="row"><b>${r.s.name}</b> <span class="mono">${r.s.id}</span> <span class="tag ${c}">${r.status.toUpperCase()}</span>
+<div>${inr(r.s.amount)} · deadline ${r.s.deadline} · source <span class="mono">mock://portal/schemes/${r.s.id}</span></div>
+${r.f.map(x=>`<div class="q">Rule (${x[0]}): “${x[1]}”</div>`).join("")}
+${r.miss.length&&!r.f.length?`<div class="q">Uncertain: required evidence missing → ${r.miss.map(d=>DOCS[d]).join(", ")}</div>`:""}
+${r.status!=="excluded"&&r.status!=="uncertain"?`<button onclick="propose('${r.s.id}')">${i===0?"Draft top match":"Draft this"}…</button>`:""}</div>`}).join("")}
+function propose(id){const p=profile(),r=S.res.find(x=>x.s.id===id);const key=id+"|"+JSON.stringify(p)+"|"+$("big").checked;S.pending={id,key};
+const rows=[["name",p.name],["dob",p.dob],["course",p.course],["year",p.year],["income",p.income],["category",p.category],["state",p.state]];
+$("appr").innerHTML=`<div class="row"><b>Approval required — nothing is saved until you approve.</b>
+<div>Destination: <span class="mono">mock://portal/drafts/new?scheme=${id}</span> (draft only; final submit stays with the student)</div>
+<div class="sc"><table>${rows.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td></tr>`).join("")}<tr><td>documents</td><td>${p.docs.map(d=>DOCS[d]).join(", ")}${$("big").checked?" (income scan will be compressed to ≤200 KB; original kept)":""}</td></tr></table></div>
+<button onclick="approve()">✅ Approve &amp; save draft</button><button class="s" onclick="S.pending=null;$('appr').textContent='Cancelled.'">Cancel</button></div>`}
+async function approve(){if(!S.pending)return;const p=profile(),{id,key}=S.pending;$("appr").textContent="Saving draft…";
+const pf=await prepareFiles(p,$("big").checked);const r=S.portal.create(key,p,pf.files,pf.blobs,$("bug").checked);S.draftId=r.id;S.orig=pf.originals;S.profile=p;
+log(`APPROVED by student: ${r.dup?"duplicate prevented, existing":"saved"} ${r.id} for ${id}; files=${pf.files.map(f=>f.doc+(f.compressed?"(compressed "+Math.round(f.origSize/1024)+"→"+Math.round(f.size/1024)+"KB)":"")).join(",")}`);
+$("appr").innerHTML=`<span class="tag ok">${r.dup?"DUPLICATE BLOCKED":"APPROVED"}</span> Draft <b>${r.id}</b> for ${id}. <button class="s" onclick="approve()">Retry (idempotent)</button>`;showDraft();await verify()}
+function showDraft(){const d=S.portal.open(S.draftId);$("draft").innerHTML=`<div class="row"><b>Draft preview ${d.id}</b> <span class="tag wn">${d.status}</span> deadline ${S.res.find(r=>S.pending&&r.s.id===S.pending.id)?.s.deadline||""}
+<div class="sc"><table>${Object.entries(d.fields).filter(([k])=>k!=="docs").map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join("")}
+${d.files.map(f=>`<tr><td>file: ${f.doc}</td><td>${Math.round(f.size/1024)} KB${f.compressed?` (compressed from ${Math.round(f.origSize/1024)} KB, original kept)`:""} · readable: ${f.readable?"yes":"NO"} (${f.readInfo}) · sha ${f.sha}</td></tr>`).join("")}</table></div></div>`}
+
+/* ---- verification (separate from the action) ---- */
+async function verifyCore(portal,id,p){const d=portal.open(id),diffs=[];
+for(const k of["name","dob","course","year","income","category","state"])if(String(d.fields[k])!==String(p[k]))diffs.push(`${k}: draft="${d.fields[k]}" ≠ profile="${p[k]}"`);
+for(const doc of p.docs){const f=d.files.find(x=>x.doc===doc);if(!f){diffs.push(`file ${doc} not uploaded`);continue}
+const b=portal.blobs[id][doc],s=await sha(b);if(s!==f.sha)diffs.push(`file ${doc}: stored hash ${s} ≠ uploaded ${f.sha}`);if(b.size>LIMIT)diffs.push(`file ${doc}: ${Math.round(b.size/1024)} KB over limit`);if(!f.readable)diffs.push(`file ${doc}: readability check failed`)}
+return{ok:!diffs.length,diffs}}
+async function verify(){S.ver=await verifyCore(S.portal,S.draftId,S.profile);log(`VERIFY ${S.draftId}: ${S.ver.ok?"PASS":"FAIL "+S.ver.diffs.join(" ; ")}`);renderVer()}
+function renderVer(){const v=S.ver;$("ver").innerHTML=v.ok?`<span class="tag ok">VERIFIED</span> Reopened ${S.draftId}: all fields and uploaded files match the profile.<br><button onclick="submitFinal()">Final submit (student action, mock)</button>`
+:`<span class="tag bad">SUBMISSION BLOCKED</span><ul>${v.diffs.map(x=>`<li>${x}</li>`).join("")}</ul><button onclick="fix()">Correct draft from profile (re-verify)</button><button class="s" disabled>Final submit (locked)</button>`}
+async function fix(){const d=S.portal.open(S.draftId);for(const k of Object.keys(S.profile))if(k!=="docs"&&String(d.fields[k])!==String(S.profile[k]))S.portal.patch(S.draftId,k,S.profile[k]);log("Student approved correction of draft fields from profile");showDraft();await verify()}
+function submitFinal(){if(!S.ver?.ok)return;$("ver").innerHTML=`<span class="tag ok">SUBMITTED (mock)</span> ${S.draftId} marked submitted by the student. No OTP/CAPTCHA was bypassed; real submission stays manual.`;log(`Mock final submit ${S.draftId}`)}
+
+/* ---- official test cases (isolated, automatic) ---- */
+const P0={name:"Asha Verma",dob:"2007-05-14",course:"B.Tech",year:"1",income:240000,category:"OBC",state:"Delhi",docs:["income","caste","marksheet","aadhaar"]};
+async function runTests(){$("tests").textContent="Running…";const R=[];
+{const p={...P0},res=evaluate(p),el=res.filter(r=>r.status==="eligible"),top=el[0],po=newPortal();const pf=await prepareFiles(p,false);const d=po.create("tc1",p,pf.files,pf.blobs,false);const v=await verifyCore(po,d.id,p);
+R.push(["TC1","Income Rs 2.4L, B.Tech, OBC","Matched schemes listed and a draft saved for the top match",`Matched: ${el.map(r=>r.s.id).join(", ")}; draft ${d.id} saved for ${top.s.id} (${top.s.name}); verification ${v.ok?"PASS":"FAIL"}`,`Source mock://portal/schemes; rule: income ≤ ${top.s.maxInc}`,el.length>0&&!!d.id&&v.ok])}
+{const p={...P0,income:240001},r=evaluate(p).find(x=>x.s.id==="SCH-102"),q=r.f.find(x=>x[0]==="income");
+R.push(["TC2","Income Rs 1 above a scheme’s ceiling (Rs 2,40,001 vs SCH-102)","Scheme excluded with the quoted rule",`SCH-102 ${r.status}; quote: “${q?q[1]:"none"}”`,"Boundary: 240000 → eligible, 240001 → excluded (strictly greater-than comparison)",r.status==="excluded"&&!!q])}
+{const p={...P0},po=newPortal(),pf=await prepareFiles(p,true),f=pf.files.find(x=>x.doc==="income"),d=po.create("tc3",p,pf.files,pf.blobs,false),v=await verifyCore(po,d.id,p);
+R.push(["TC3","Certificate upload over the size limit (200 KB)","Compressed copy uploaded, original kept, readability checked",`Original ${Math.round(f.origSize/1024)} KB → uploaded ${Math.round(f.size/1024)} KB; original kept: ${f.originalKept&&!!pf.originals.income}; readable: ${f.readable} (${f.readInfo}); verify ${v.ok?"PASS":"FAIL"}`,"Readability is a proxy check (resolution + ink contrast), not OCR",f.compressed&&f.size<=LIMIT&&f.readable&&!!pf.originals.income&&v.ok])}
+{const p={...P0},po=newPortal(),pf=await prepareFiles(p,false),d=po.create("tc4",p,pf.files,pf.blobs,true),v1=await verifyCore(po,d.id,p);
+const dobBad=po.open(d.id).fields.dob;po.patch(d.id,"dob",p.dob);const v2=await verifyCore(po,d.id,p);
+R.push(["TC4","Draft preview shows the wrong date of birth","Submission blocked until the student corrects it",`Draft DOB ${dobBad} vs profile ${p.dob} → verify ${v1.ok?"PASS":"FAIL"} (submit ${v1.ok?"open":"BLOCKED"}); after correction → ${v2.ok?"PASS (submit unlocked)":"FAIL"}`,v1.diffs.join(" ; "),!v1.ok&&v2.ok])}
+S.rep=R;log("Ran TC1–TC4: "+R.map(r=>r[0]+"="+(r[5]?"PASS":"FAIL")).join(" "));
+$("tests").innerHTML=`<table><tr><th>ID</th><th>Input</th><th>Expected</th><th>Actual</th><th>Evidence</th><th>Result</th></tr>${R.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td><span class="tag ${r[5]?"ok":"bad"}">${r[5]?"PASS":"FAIL"}</span></td></tr>`).join("")}</table>`}
+function copyRep(){const t=S.rep.map(r=>`${r[0]} | ${r[1]} | expected: ${r[2]} | actual: ${r[3]} | evidence: ${r[4]} | ${r[5]?"PASS":"FAIL"}`).join("\n");try{navigator.clipboard.writeText(t)}catch(e){}log("Report copied (or select text from table)")}
+</script></main></body></html>
